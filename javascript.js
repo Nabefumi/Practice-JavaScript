@@ -145,41 +145,55 @@
 // console.log(`${ms} ms`);
 
 // console.log(4);
+// console.log('start');
 
-const promise = new Promise((resolve, reject) => {
-    //時間のかかる処理
-    //resolve
-    setTimeout(() => {
-        console.log('１秒たったよ')
-        resolve('some value');
-    }, 1000);
-});
-
-console.log(promise);
-
-const isClosure = true;
-
-promise.then(() => {
-    console.log('I am called by then method.');
-    console.log(promise);
-});
-
-console.log('start');
-
-// setTimeout(() => {
-//     console.log('１秒たったよ');
-//     setTimeout(() => {
-//         console.log('１秒たったよ');
-//     }, 1000);
+// const sleep = (milliseconds) => {
+//     return new Promise((resolve) => {
 //         setTimeout(() => {
-//         console.log('１秒たったよ');
-//         setTimeout(() => {
-//             console.log('１秒たったよ');
-//         }, 1000);
-//     }, 1000);
-// }, 1000);
+//             console.log(`${milliseconds} ms`);
+//             resolve();
+//         }, milliseconds);
+//     });
+// };
 
-console.log('end');
+// async function asyncCall() {
+//     await sleep(900);
+//     await sleep(901);
+//     await sleep(902);
+//     await sleep(903);
+//     await sleep(904);
+//     await sleep(905);
+// }
+
+// asyncCall();
+// // sleep(900)
+// // .then(() => sleep(901))
+// // .then(() => sleep(902))
+// // .then(() => sleep(903));
+
+// console.log('end');
+
+// const result = fetch('https://jsonplaceholder.typicode.com/todos/1')
+// console.log({ result });
+
+// fetch('https://jsonplaceholder.typicode.com/todos/1')
+//   .then(response => {
+//     console.log({ response });
+//     const json = response.json();
+//     console.log({ json });
+//     return json;
+//   })
+//   .then(json => console.log(json));
+
+const url = 'https://jsonplaceholder.typicode.com/users';
+
+const fetchUser = async () => {
+    const result = await fetch(url);
+    const json = await result.json()
+    console.log(json);
+};
+
+fetchUser();
 
 
 
